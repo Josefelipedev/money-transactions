@@ -2,7 +2,7 @@
   "transactions": [
     {
       "id": 1,
-      "description": "Desenvolvimento de website",
+      "description": "desenvolvimento de website",
       "type": "income",
       "category": "Desenvolvimento",
       "price": 12000,
@@ -10,7 +10,7 @@
     },
     {
       "id": 2,
-      "description": "Aluguel",
+      "description": "aluguel",
       "type": "outcome",
       "category": "Casa",
       "price": 1100,
@@ -18,11 +18,51 @@
     },
     {
       "id": 3,
-      "description": "Aluguel",
+      "description": "aluguel",
       "type": "outcome",
       "category": "Casa",
       "price": 1100,
       "createdAt": "2025-01-20 10:00:00"
+    },
+    {
+      "id": 4,
+      "description": "freelance de design",
+      "type": "income",
+      "category": "Design",
+      "price": 3000,
+      "createdAt": "2025-02-15 15:30:00"
+    },
+    {
+      "id": 5,
+      "description": "compra de monitor",
+      "type": "outcome",
+      "category": "Equipamento",
+      "price": 1500,
+      "createdAt": "2025-02-16 09:45:00"
+    },
+    {
+      "id": 6,
+      "description": "pagamento de internet",
+      "type": "outcome",
+      "category": "Casa",
+      "price": 200,
+      "createdAt": "2025-03-01 08:00:00"
+    },
+    {
+      "id": "8f26",
+      "description": "comida",
+      "price": 1000,
+      "category": "supermercado",
+      "type": "outcome",
+      "createdAt": "2025-04-13T23:34:21.933Z"
+    },
+    {
+      "id": "7ca7",
+      "description": "teste",
+      "price": 100,
+      "category": "teste",
+      "type": "outcome",
+      "createdAt": "2025-04-13T23:42:07.653Z"
     }
   ]
 }
