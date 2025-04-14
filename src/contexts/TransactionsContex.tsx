@@ -1,4 +1,4 @@
-import { ReactNode, useEffect, useState } from 'react';
+import { ReactNode, useCallback, useEffect, useState } from 'react';
 import { createContext } from 'use-context-selector';
 import { api } from '../libs/axios.ts';
 
@@ -34,7 +34,7 @@ interface TransactionProviderProps {
 export function TransactionsProvider({ children }: TransactionProviderProps) {
   const [transactions, setTransactions] = useState<Transaction[]>([]);
 
-  async function fetchTransactions(query?: string) {
+  const fetchTransactions = useCallback(async (query?: string) => {
     console.log('[ fetchTransactions ] ' + query);
     const url = new URL('http://localhost:3333/transactions');
 
@@ -49,28 +49,30 @@ export function TransactionsProvider({ children }: TransactionProviderProps) {
       },
     });
     setTransactions(response.data);
-  }
-
+  }, []);
   useEffect(() => {
     fetchTransactions();
-  }, []);
+  }, [fetchTransactions]);
 
-  async function createTransaction(data: CreateTransactionInput) {
-    try {
-      const { description, price, category, type } = data;
-      const response = await api.post('/transactions', {
-        description,
-        price,
-        category,
-        type,
-        createdAt: new Date(),
-      });
+  const createTransaction = useCallback(
+    async (data: CreateTransactionInput) => {
+      try {
+        const { description, price, category, type } = data;
+        const response = await api.post('/transactions', {
+          description,
+          price,
+          category,
+          type,
+          createdAt: new Date(),
+        });
 
-      setTransactions((state) => [...state, response.data]);
-    } catch (e) {
-      console.log(e);
-    }
-  }
+        setTransactions((state) => [...state, response.data]);
+      } catch (e) {
+        console.log(e);
+      }
+    },
+    []
+  );
 
   return (
     <TransactionsContext.Provider
